@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simran Masih | Business Analyst</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0D1B2A;
+      --ink:    #1A2B3C;
+      --steel:  #2E4057;
+      --sky:    #4A90D9;
+      --ice:    #E8F1FB;
+      --white:  #FFFFFF;
+      --mist:   #F5F8FC;
+      --mid:    #6B8CAE;
+      --light:  #B0C6DE;
+      --serif:  'DM Serif Display', serif;
+      --sans:   'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 2.5rem;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--ice);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--navy);
+      letter-spacing: 0.01em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--steel);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--sky); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex; align-items: center;
+      padding: 6rem 2.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; top: -120px; right: -80px;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(74,144,217,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-inner { max-width: 780px; position: relative; z-index: 1; }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sky);
+      border: 1px solid rgba(74,144,217,0.4);
+      padding: 0.3rem 0.85rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 1.25rem;
+    }
+    .hero-name span { color: var(--sky); }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--light);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+    .hero-cta {
+      display: inline-flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn {
+      padding: 0.75rem 1.75rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: var(--sky);
+      color: var(--white);
+      border: 2px solid var(--sky);
+    }
+    .btn-primary:hover { background: #3a7fc4; border-color: #3a7fc4; }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    .btn-outline:hover { border-color: var(--white); }
+
+    .hero-stats {
+      display: flex; gap: 3rem; margin-top: 4rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      flex-wrap: wrap;
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      color: var(--white);
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2.5rem; }
+    .section-inner { max-width: 960px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    .section-intro {
+      color: var(--steel);
+      font-size: 1rem;
+      max-width: 600px;
+      margin-bottom: 3rem;
+      line-height: 1.75;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--mist); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .about-text p {
+      color: var(--steel);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      font-size: 0.97rem;
+    }
+    .about-skills { display: flex; flex-direction: column; gap: 1rem; }
+    .skill-row { display: flex; flex-direction: column; gap: 0.3rem; }
+    .skill-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .skill-bar { background: var(--ice); height: 4px; border-radius: 2px; }
+    .skill-fill {
+      height: 100%; border-radius: 2px;
+      background: linear-gradient(90deg, var(--sky), #6db3f2);
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--white); }
+    .exp-list { display: flex; flex-direction: column; gap: 2.5rem; }
+    .exp-card {
+      border-left: 3px solid var(--ice);
+      padding-left: 1.75rem;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .exp-card:hover { border-color: var(--sky); }
+    .exp-card::before {
+      content: '';
+      position: absolute; left: -6px; top: 6px;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--sky);
+    }
+    .exp-meta {
+      display: flex; justify-content: space-between; align-items: baseline;
+      flex-wrap: wrap; gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .exp-company {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--navy);
+    }
+    .exp-date {
+      font-size: 0.78rem;
+      color: var(--mid);
+      font-weight: 500;
+    }
+    .exp-role {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--sky);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.85rem;
+    }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .exp-bullets li {
+      font-size: 0.93rem;
+      color: var(--steel);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.65;
+    }
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: var(--light);
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--mist); }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+    }
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--ice);
+      border-radius: 6px;
+      padding: 1.75rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .project-card:hover {
+      box-shadow: 0 8px 32px rgba(13,27,42,0.1);
+      transform: translateY(-3px);
+    }
+    .project-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 0.75rem;
+    }
+    .project-name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--steel);
+      line-height: 1.7;
+      margin-bottom: 1.1rem;
+    }
+    .project-stack {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+    }
+    .stack-pill {
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      background: var(--ice);
+      color: var(--steel);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── CERTIFICATIONS ── */
+    #certs { background: var(--white); }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    .cert-card {
+      border: 1px solid var(--ice);
+      border-radius: 4px;
+      padding: 1.4rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+    }
+    .cert-icon {
+      width: 36px; height: 36px;
+      background: var(--ice);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .cert-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+    .cert-issuer {
+      font-size: 0.78rem;
+      color: var(--mid);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--navy);
+      text-align: center;
+    }
+    #contact .section-title { color: var(--white); }
+    #contact .section-intro { color: var(--light); margin: 0 auto 2.5rem; }
+    .contact-links {
+      display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap;
+    }
+    .contact-link {
+      padding: 0.7rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 3px;
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .contact-link:hover {
+      background: rgba(74,144,217,0.2);
+      border-color: var(--sky);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.78rem;
+      color: var(--mid);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1.25rem; }
+      section { padding: 3.5rem 1.25rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Simran Masih</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">Business Analyst · Data Analytics</span>
+    <h1 class="hero-name">Simran<br/><span>Masih</span></h1>
+    <p class="hero-sub">
+      Business Analyst bridging strategy and data — turning complex requirements into Power BI dashboards, SQL-driven insights, and Agile delivery across financial services and technology.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="mailto:simran@itresumejobs.com" class="btn btn-outline">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">3+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div>
+        <span class="stat-num">65%</span>
+        <span class="stat-label">Faster Reporting</span>
+      </div>
+      <div>
+        <span class="stat-num">200+</span>
+        <span class="stat-label">UAT Test Cases</span>
+      </div>
+      <div>
+        <span class="stat-num">PL-300</span>
+        <span class="stat-label">Power BI Certified</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <p class="section-label">Background</p>
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a Business Analyst with around three years of experience across financial services and technology, currently at The Hartford working on Group Benefits and regulatory compliance reporting. I hold an M.S. in Business Analytics from the University of New Haven (GPA 3.55, Dec 2025) and a Microsoft PL-300 Power BI certification.
+        </p>
+        <p>
+          My strength is working both sides of the equation — I can lead a stakeholder workshop to define KPIs and write a BRD, and I can also open SQL and trace a data quality issue back to its source. I believe the best analytical work happens when those two things aren't separated.
+        </p>
+        <p>
+          Based in Connecticut. Open to remote and hybrid opportunities across the US.
+        </p>
+      </div>
+      <div class="about-skills">
+        <div class="skill-row">
+          <span class="skill-name">Power BI / DAX</span>
+          <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">SQL</span>
+          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Requirements Gathering / BRD / FRD</span>
+          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Agile / JIRA</span>
+          <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Python (Pandas)</span>
+          <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Tableau</span>
+          <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Advanced Excel</span>
+          <div class="skill-bar"><div class="skill-fill" style="width:87%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label">Work History</p>
+    <h2 class="section-title">Experience</h2>
+    <div class="exp-list">
+
+      <div class="exp-card">
+        <div class="exp-meta">
+          <span class="exp-company">Hartford Financial Services Group</span>
+          <span class="exp-date">Jul 2025 – Present · CT</span>
+        </div>
+        <div class="exp-role">Business Analyst</div>
+        <ul class="exp-bullets">
+          <li>Built end-to-end Power BI dashboards consolidating 10+ financial data sources, cutting executive reporting turnaround by 65% and enabling real-time KPI visibility across 5 business units.</li>
+          <li>Engineered DAX measures and SQL data models for compliance and workforce analytics, improving report accuracy by 40% and eliminating 12+ hours of manual reconciliation weekly.</li>
+          <li>Led requirements gathering and BRD/FRD documentation for a regulatory reporting initiative, aligning 8 cross-functional stakeholders and accelerating UAT completion by 30%.</li>
+          <li>Translated 50+ business requirements into Agile user stories in JIRA across 3 sprint teams, contributing to a 25% improvement in on-time feature delivery.</li>
+          <li>Used SQL root cause analysis to identify a data pipeline gap causing record drops, reducing reporting errors by 47% within one quarter.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-meta">
+          <span class="exp-company">Orion Technolab</span>
+          <span class="exp-date">Jan 2022 – Nov 2023 · India</span>
+        </div>
+        <div class="exp-role">Business Analyst</div>
+        <ul class="exp-bullets">
+          <li>Delivered 15+ Tableau dashboards for operational and predictive analytics, improving leadership decision-making speed by 35% and reducing ad hoc requests by 50%.</li>
+          <li>Optimized complex SQL queries for workforce analytics, cutting average execution time by 55% and enabling daily refresh cycles previously running weekly.</li>
+          <li>Mapped and re-engineered 8 core business processes through gap analysis and stakeholder workshops, reducing inefficiencies by 30% and saving ~20 hours/week across teams.</li>
+          <li>Coordinated end-to-end UAT for a BI modernization project covering 200+ test cases, achieving 98% defect resolution before go-live with zero post-launch critical issues.</li>
+          <li>Documented functional requirements in Confluence, creating a knowledge base adopted by 4 teams and reducing analyst onboarding time by 40%.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-label">Selected Work</p>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-intro">A mix of academic capstone and independent analytics projects demonstrating end-to-end data work.</p>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <div class="project-tag">Capstone · Fall 2025</div>
+        <div class="project-name">Transportation Data Analytics — Port Authority NY/NJ</div>
+        <p class="project-desc">Collaborated directly with Port Authority stakeholders to define KPIs, cleaned multi-source traffic, toll, and violation data, and built a Power BI dashboard with forecasting techniques that improved model accuracy by 15%.</p>
+        <div class="project-stack">
+          <span class="stack-pill">SQL</span>
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">Power BI</span>
+          <span class="stack-pill">DAX</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">Independent · Mar 2026</div>
+        <div class="project-name">Employee Attrition Analysis Dashboard</div>
+        <p class="project-desc">Analyzed 1,470 employee records using Python (Pandas) to surface key attrition drivers — Sales Reps showed 39.8% turnover, overtime workers were 3× more likely to leave. Built a 5-visual Power BI dashboard with actionable retention recommendations.</p>
+        <div class="project-stack">
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">Pandas</span>
+          <span class="stack-pill">Power BI</span>
+          <span class="stack-pill">DAX</span>
+          <span class="stack-pill">HR Analytics</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">Academic · Spring 2025</div>
+        <div class="project-name">SQL Database Design & Query Optimization</div>
+        <p class="project-desc">Replaced a redundancy-heavy manual process with a normalized relational database for 10,000+ records. Optimized stored procedures achieved 40% faster query performance, validated through full UAT before go-live.</p>
+        <div class="project-stack">
+          <span class="stack-pill">SQL Server</span>
+          <span class="stack-pill">MySQL</span>
+          <span class="stack-pill">Stored Procedures</span>
+          <span class="stack-pill">UAT</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">Academic · Spring 2025</div>
+        <div class="project-name">Marketing Analytics Dashboard</div>
+        <p class="project-desc">Cleaned 50,000+ customer records using Pandas, built behavioral and value-based segments, and delivered a self-service Power BI dashboard enabling the marketing team to extract insights independently.</p>
+        <div class="project-stack">
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">Power BI</span>
+          <span class="stack-pill">DAX</span>
+          <span class="stack-pill">Customer Segmentation</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="section-inner">
+    <p class="section-label">Credentials</p>
+    <h2 class="section-title">Education & Certifications</h2>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon">🎓</div>
+        <div>
+          <div class="cert-name">M.S. Business Analytics</div>
+          <div class="cert-issuer">University of New Haven · GPA 3.55 · Dec 2025</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🎓</div>
+        <div>
+          <div class="cert-name">B.Com (Commerce)</div>
+          <div class="cert-issuer">M.S. University of Baroda · May 2023</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">📊</div>
+        <div>
+          <div class="cert-name">Microsoft PL-300</div>
+          <div class="cert-issuer">Power BI Data Analyst Associate</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">📈</div>
+        <div>
+          <div class="cert-name">Google Data Analytics</div>
+          <div class="cert-issuer">Professional Certificate · Google</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Let's Connect</p>
+    <h2 class="section-title">Get in Touch</h2>
+    <p class="section-intro">Open to Business Analyst and Data Analyst roles — remote or hybrid across the US. Currently on F-1 OPT, currently available.</p>
+    <div class="contact-links">
+      <a href="mailto:simran@itresumejobs.com" class="contact-link">📧 simran@itresumejobs.com</a>
+      <a href="tel:2032759085" class="contact-link">📞 203-275-9085</a>
+      <a href="https://www.linkedin.com/in/simran-masih07" class="contact-link" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Simranmasih07" class="contact-link" target="_blank">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Simran Masih · Built for GitHub Pages
+</footer>
+
+</body>
+</html>
